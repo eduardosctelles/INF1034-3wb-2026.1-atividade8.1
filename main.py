@@ -46,19 +46,33 @@ def criptografia(senha):
             senha_cripto += char
     return senha_cripto
 
-email = input('Digite o seu email:\n')
-senha = input('Digite a sua senha:\n')
+#email = input('Digite o seu email:\n')
+#senha = input('Digite a sua senha:\n')
 
 if val_email('dudetelles@puc.com') == True and val_senha('Johnwilliams1977') == True:
-    janela = display.set_mode((800, 800))
-    janela.fill((255, 255, 255))
+
     init()
+    janela = display.set_mode((800, 800))
+    janela.fill(((255, 255, 255)))
+    fonte = font.Font('fonte.ttf', 50)
     running = True
+
     while running: 
-        fonte = font.Font('fonte.ttf', 50)
-        clock.tick(60)
+
         for ev in event.get():
             if ev.type == QUIT:
                 running = False
+
+        fonte_menu = fonte.render('-Menu-', True, (66, 143, 86))
+        janela.blit(fonte_menu, (320, 30))
+        fonte_casinha = fonte.render('(Jogo da casinha)', True, (255, 200, 100))
+        janela.blit(fonte_casinha, (210, 140))
+        fonte_forca = fonte.render('(Jogo da forca)', True, (255, 200, 100))
+        janela.blit(fonte_forca, (225, 400))
+        fonte_ppt = fonte.render('(Pedra, Papel e Tesoura)', True, (255, 200, 100))
+        janela.blit(fonte_ppt, (150, 650))
+
+
+        display.update()
 else:
     print('Acesso negado!')
